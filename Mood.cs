@@ -9,6 +9,10 @@ namespace MoodAnalyser
     public class Mood
     {
         public string messege;
+
+        private const string SAD_MESSAGE = "I am in Sad Mood";
+        private const string HAPPY_MESSAGE = "I am in Any Mood";
+        
         public Mood()
         {
 
@@ -19,14 +23,29 @@ namespace MoodAnalyser
         }
         public string MoodAnalyse()
         {
-            if (messege.ToUpper().Contains("SAD"))
+            try
             {
-                return "Sad Mood";
+                if (messege == null || messege == string.Empty)
+                    throw new Exception();
+                if (messege == SAD_MESSAGE)
+                    return "SAD";
+                if (messege == HAPPY_MESSAGE)
+                    return "HAPPY";
             }
-            else
+            catch (Exception)
             {
-                return "Happy Mood";
+                return "HAPPY";
             }
+            return null;
+
+            //if (messege.ToUpper().Contains("SAD"))
+            //{
+            //    return "Sad Mood";
+            //}
+            //else
+            //{
+            //    return "Happy Mood";
+            //}
         }
     }
 }
