@@ -8,7 +8,7 @@ namespace MoodAnalyser
 {
     public class Mood
     {
-        public string messege;
+        private string messege;
 
         private const string SAD_MESSAGE = "I am in Sad Mood";
         private const string HAPPY_MESSAGE = "I am in Any Mood";
@@ -26,13 +26,13 @@ namespace MoodAnalyser
             try
             {
                 if (messege == null || messege == string.Empty)
-                    throw new Exception();
+                    throw new MoodAnalysisException();
                 if (messege == SAD_MESSAGE)
-                    return "SAD";
+                    return "Sad Mood";
                 if (messege == HAPPY_MESSAGE)
-                    return "HAPPY";
+                    return "Happy Mood";
             }
-            catch (Exception)
+            catch (MoodAnalysisException)
             {
                 return "HAPPY";
             }
